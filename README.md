@@ -1,6 +1,6 @@
 # EllipsoidalFloatingMenu (SwiftUI)
 
-This is just an idea to make moving floating buttons through ellipsoidal path.
+This is just an idea to make floating buttons through ellipsoidal path.
 
 
 
