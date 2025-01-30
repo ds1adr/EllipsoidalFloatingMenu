@@ -15,33 +15,30 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ScrollViewReader { reader in
-                ScrollView(.vertical) {
-                    VStack(alignment: .leading) {
-                        Spacer()
-                            .frame(height: geometry.size.height)
-                        ForEach(0 ..< buttonCount, id: \.self ) { index in
-                            HStack(spacing: spacing) {
-                                Button("Button \(index)") {
-                                    
-                                }
-                                .frame(height: buttonHeight)
-                                .offset(x: getOffset(geometry: geometry, index: index))
-                                Spacer()
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
+                    Spacer()
+                        .frame(height: geometry.size.height)
+                    ForEach(0 ..< buttonCount, id: \.self ) { index in
+                        HStack(spacing: spacing) {
+                            Button("Button \(index)") {
+                                
                             }
+                            .frame(height: buttonHeight)
+                            .offset(x: getOffset(geometry: geometry, index: index))
+                            Spacer()
                         }
-                        Spacer()
-                            .frame(height: geometry.size.height)
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding()
+                    Spacer()
+                        .frame(height: geometry.size.height)
                 }
-                .onScrollGeometryChange(for: CGFloat.self) { geo in
-                    geo.contentOffset.y
-                } action: { oldValue, newValue in
-                    offsetY = newValue
-                }
-
+                .frame(maxWidth: .infinity)
+                .padding()
+            }
+            .onScrollGeometryChange(for: CGFloat.self) { geo in
+                geo.contentOffset.y
+            } action: { oldValue, newValue in
+                offsetY = newValue
             }
             .ignoresSafeArea()
         }
